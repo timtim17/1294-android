@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Top Gun Robotics</string>
+    <string name="action_settings">Settings</string>
+    <string name="views_main_res_file">These views have been added in the main layout file.</string>
+    <string name="good">That\'s Good!</string>
+    <string name="vote_pres_question">Who should be president?</string>
+    <string name="pres_one">Duate for Pres</string>
+    <string name="pres_two">Sergey for Pres</string>
+    <string name="pres_three">Larry for Pres</string>
+    <string name="button_vote">Vote</string>
+    <string name="access_desc_button_facebook">Team 1294 Facebook</string>
+    <string name="access_desc_button_about">About This App</string>
+    <string name="access_desc_button_github">Team 1294 GitHub</string>
+    <string name="access_desc_button_gplus">Team 1294 Google Plus</string>
+    <string name="access_desc_button_youtube">Team 1294 YouTube</string>
+    <string name="access_desc_button_website">Team 1294 Website</string>
+    <string name="button_website">Top Gun Robotics Website</string>
+    <string name="button_about">About</string>
+    <string name="title_activity_about">About</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="comingsoon_about">This is where information about the team and the app would go.</string>
+
+</resources>

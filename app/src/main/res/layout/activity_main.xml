@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="8dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="@string/button_website"
+        android:drawableLeft="@drawable/ic_button_globe"
+        android:drawableStart="@drawable/ic_button_globe"
+        android:id="@+id/button_website"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/access_desc_button_website"
+        android:onClick="showWebsite" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_website"
+        android:layout_centerHorizontal="true">
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/button_facebook"
+            android:src="@drawable/ic_button_facebook"
+            android:contentDescription="@string/access_desc_button_facebook"
+            android:onClick="showFacebook"  />
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/button_youtube"
+            android:src="@drawable/ic_button_youtube"
+            android:contentDescription="@string/access_desc_button_youtube"
+            android:onClick="showYouTube"  />
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/gPlusButton"
+            android:src="@drawable/ic_button_gplus"
+            android:contentDescription="@string/access_desc_button_gplus"
+            android:onClick="showGPlus"  />
+
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/githubButton"
+            android:src="@drawable/ic_button_github"
+            android:contentDescription="@string/access_desc_button_github"
+            android:onClick="showGitHub"  />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="@string/button_about"
+        android:drawableLeft="@drawable/ic_button_about"
+        android:drawableStart="@drawable/ic_button_about"
+        android:id="@+id/button_about"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/access_desc_button_about"
+        android:onClick="showAbout"
+        android:enabled="false" />
+
+</RelativeLayout>
