@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.timtim17.dev.java.android.topgunrobotics.events.timer.TimerActivity"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal"
+    android:id="@+id/fullscreen_content"
+    android:background="@color/background_material_dark">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="88:88:88:88"
+        android:id="@+id/timer"
+        android:textSize="112sp"
+        android:textColor="@android:color/primary_text_dark_nodisable"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/countdown.event.name"
+        android:id="@+id/event"
+        android:gravity="center"
+        android:textSize="24sp" />
+</LinearLayout>

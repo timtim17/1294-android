@@ -20,6 +20,18 @@
     <string name="button_about">About</string>
     <string name="title_activity_about">About</string>
     <string name="hello_world">Hello world!</string>
-    <string name="comingsoon_about">This is where information about the team and the app would go.</string>
+    <string name="title_activity_sponsor">Sponsors</string>
+    <string name="button_sponsors">Sponsors</string>
+    <string name="lorem_ipsum"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla tristique neque fermentum convallis. Curabitur ornare egestas pulvinar. Phasellus sagittis sapien ut ligula interdum, a luctus tellus tempor. Quisque nec odio lacus. Pellentesque accumsan ipsum non diam lobortis, id viverra risus ultricies. Fusce auctor odio vitae dolor auctor, vitae laoreet orci consectetur. Morbi eu pulvinar mauris, eget porttitor leo. Vivamus luctus lacus ut turpis dapibus sollicitudin. Vestibulum vitae elit porttitor, venenatis libero eget, lacinia metus. Integer vel est non odio mattis eleifend. Nunc tincidunt tincidunt nisi, et iaculis risus finibus vitae.\n\n
+Duis efficitur tellus justo, nec elementum turpis laoreet a. Suspendisse tincidunt velit eu lectus placerat, a lobortis urna euismod. Aenean consectetur dignissim elit, vitae facilisis metus eleifend vitae. Nullam tincidunt tempor mauris quis fermentum. Nam a enim mollis, consequat est lacinia, euismod tellus. Sed ultricies magna lorem, nec laoreet risus aliquet eget. Vestibulum nec efficitur enim.\n\n
+Sed pulvinar aliquet tortor ut tempus. Aliquam ultricies congue odio. Nam posuere dui ex, at dignissim tellus hendrerit vitae. In vel lectus id lacus scelerisque volutpat eu sed nunc. Sed non nunc ac leo hendrerit ultricies. Ut faucibus efficitur tellus a sagittis. Curabitur luctus auctor dolor, vel sagittis dolor consequat at. Donec blandit ut nulla eu semper. Suspendisse at dictum nisi. Morbi ante elit, vulputate eget rhoncus vitae, malesuada id enim. Integer vitae commodo nunc. Etiam pellentesque mauris vel odio bibendum, quis consectetur justo commodo.\n\n
+Duis vitae leo in quam varius scelerisque. Praesent accumsan aliquet volutpat. Donec tempor, erat nec aliquam maximus, risus erat semper magna, in semper nunc diam vitae dolor. Nullam ut sem volutpat, tincidunt quam eget, pellentesque elit. Suspendisse quis ultricies nisl. Donec in ligula urna. Suspendisse finibus bibendum consectetur. Aliquam rutrum tempus consectetur.</string>
+    <string name="about_team">About the Team</string>
+    <string name="about_app">About the App</string>
+    <string name="title_activity_timer">Countdown to FRC Kickoff</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="countdown.event.name">Till FRC Kickoff</string>
+    <string name="countdown.event.link">Watch FRC Kickoff</string>
 
 </resources>

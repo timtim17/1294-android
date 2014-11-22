@@ -17,9 +17,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="me.timtim17.dev.java.android.topgunrobotics.AboutActivity"
+            android:name="me.timtim17.dev.java.android.topgunrobotics.about.AboutActivity"
             android:label="@string/title_activity_about"
             android:parentActivityName="me.timtim17.dev.java.android.topgunrobotics.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.timtim17.dev.java.android.topgunrobotics.MainActivity" />
+        </activity>
+        <activity
+            android:name="me.timtim17.dev.java.android.topgunrobotics.sponsors.SponsorActivity"
+            android:label="@string/title_activity_sponsor"
+            android:parentActivityName="me.timtim17.dev.java.android.topgunrobotics.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.timtim17.dev.java.android.topgunrobotics.MainActivity" />
+        </activity>
+        <activity
+            android:name=".events.timer.TimerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_timer"
+            android:parentActivityName="me.timtim17.dev.java.android.topgunrobotics.MainActivity"
+            android:theme="@style/FullscreenTheme"
+            android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="me.timtim17.dev.java.android.topgunrobotics.MainActivity" />
