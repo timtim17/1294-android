@@ -3,9 +3,9 @@
     <color name="primary">#607d8b</color>
     <color name="primary.dark">#37474f</color>
     <color name="primary.light">#b0bec5</color>
-    <color name="accent">#ff3d00</color>
-    <color name="accent.dark">#ff6e40</color>
-    <color name="accent.light">#dd2c00</color>
+    <color name="accent">#212121</color>
+    <color name="accent.dark">#000000</color>
+    <color name="accent.light">#424242</color>
 
     <color name="timer_over">#F44336</color>
 </resources>
