@@ -19,10 +19,8 @@ At this point much of the app is in an unfinished state. If you'd really like to
 2. Install (at least) API Level 21 and some of the build tools, as well as probably the USB Driver.
   - I have no idea exactly what you'll need, but you'll probably need some of the top packages, API level 21 as that's what I'm curently building against, and maybe some of the packages in the `Extras` bundle at the bottom of the SDK Manager.
 3. Install
- 
-  a. Either click the run button in Android Studio to push a _"debug"_ build of the app, or...
-
-  b. build your own APK under the build menu with your own keystore.
+  - Either click the run button in Android Studio to push a _"debug"_ build of the app, or...
+  - build your own APK under the build menu with your own keystore.
 4. Make sure to take a look at **Things to Note** below.
 
 _(I'll be adding a better guide at a later date.)_
@@ -30,3 +28,5 @@ _(I'll be adding a better guide at a later date.)_
 ## Things to Note
 
 Make sure to generate your own Calendar API key if you make your own APK. Instructions are provided on the Google Developers website (link to be added later).
+
+Do note that a lot of things are unfinished and unpolished, as this is a work in progress.
