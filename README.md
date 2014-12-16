@@ -1,4 +1,4 @@
-1294-android ![](https://img.shields.io/travis/timtim17/1294-android.svg)
+1294-android ![](https://travis-ci.org/timtim17/1294-android.svg?branch=master)
 ============
 
 An unofficial app for the Top Gun Robotics Team (FRC 1294)
