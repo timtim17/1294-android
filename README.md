@@ -19,6 +19,7 @@ At this point much of the app is in an unfinished state. If you'd really like to
 2. Install (at least) API Level 21 and some of the build tools, as well as probably the USB Driver.
   - I have no idea exactly what you'll need, but you'll probably need some of the top packages, API level 21 as that's what I'm curently building against, and maybe some of the packages in the `Extras` bundle at the bottom of the SDK Manager.
 3. Install
+ 
   a. Either click the run button in Android Studio to push a _"debug"_ build of the app, or...
 
   b. build your own APK under the build menu with your own keystore.
