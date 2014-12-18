@@ -3,13 +3,6 @@
 
     <string name="app_name">Top Gun Robotics</string>
     <string name="action_settings">Settings</string>
-    <string name="views_main_res_file">These views have been added in the main layout file.</string>
-    <string name="good">That\'s Good!</string>
-    <string name="vote_pres_question">Who should be president?</string>
-    <string name="pres_one">Duate for Pres</string>
-    <string name="pres_two">Sergey for Pres</string>
-    <string name="pres_three">Larry for Pres</string>
-    <string name="button_vote">Vote</string>
     <string name="access_desc_button_facebook">Team 1294 Facebook</string>
     <string name="access_desc_button_about">About This App</string>
     <string name="access_desc_button_github">Team 1294 GitHub</string>
@@ -33,5 +26,5 @@ Duis vitae leo in quam varius scelerisque. Praesent accumsan aliquet volutpat. D
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="countdown.event.name">Till FRC Kickoff</string>
     <string name="countdown.event.link">Watch FRC Kickoff</string>
-
+    <string name="sharedPrefsId">org.team1294.app.android.sharedprefs</string>
 </resources>

@@ -3,6 +3,7 @@ package org.team1294.app.android;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -13,23 +14,36 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-//import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarRequestInitializer;
+import com.google.api.services.calendar.CalendarScopes;
 
 import org.team1294.app.android.about.AboutActivity;
 import org.team1294.app.android.events.Event;
 import org.team1294.app.android.events.Events;
+import org.team1294.app.android.events.cal.RetrieveNextMeeting;
 import org.team1294.app.android.events.timer.EventCountdown;
 import org.team1294.app.android.events.timer.TimerActivity;
 import org.team1294.app.android.fonts.Fonts;
 import org.team1294.app.android.sponsors.SponsorActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.GeneralSecurityException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -38,8 +52,6 @@ public class MainActivity extends ActionBarActivity {
     // TODO: Add Next Event Card
 
     private Event currentEvent = new Events().frcKickOff;
-
-    private Calendar service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,53 +65,7 @@ public class MainActivity extends ActionBarActivity {
         LinearLayout afterCountdownDoneShowView = (LinearLayout) findViewById(R.id.layout_livestream);
         new EventCountdown(currentEvent, timerView, R.id.timer, R.id.event, afterCountdownDoneShowView, true);
 
-        try{
-        setupCal();
-        List<com.google.api.services.calendar.model.Event> events = service
-            .events()
-            .list("frc1294@gmail.com")
-            .setMaxResults(1)
-            .setQ("Regular Meeting")
-            .execute()
-            .getItems();
-        com.google.api.services.calendar.model.Event event = events.get(0);
-        TextView viewsTextDaysTill = (TextView) findViewById(R.id.text_days_to_meeting);
-        viewsTextDaysTill.setTypeface(robotoThin);
-        viewsTextDaysTill.setText(event.getSummary());
-
-        TextView viewTextTimeLocation = (TextView) findViewById(R.id.text_time_location);
-        SimpleDateFormat startHourFormat = new SimpleDateFormat("h");
-        SimpleDateFormat endHourFormat = new SimpleDateFormat("h a");
-        try {
-            String tempStart = startHourFormat.parse(event.getStart().getDateTime().toString()).toString();
-            String tempEnd = endHourFormat.parse(event.getEnd().getDateTime().toString()).toString();
-            String location = event.getLocation();
-            viewTextTimeLocation.setText(tempStart + " to " +tempEnd + " at " + location);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            viewTextTimeLocation.setVisibility(View.GONE);
-        }
-        }catch(Exception e){
-            Log.e("1294", "Calendar Error: " + e.getMessage());
-            findViewById(R.id.next_meeting).setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        new RetrieveNextMeeting(this, R.id.next_meeting, R.id.text_days_to_meeting, R.id.text_time_location).execute();
     }
 
     /* Event Handlers */
@@ -172,17 +138,5 @@ public class MainActivity extends ActionBarActivity {
                           }
                       },
                 300L);*/
-    }
-
-    private void setupCal() throws IOException, GeneralSecurityException {
-        //AndroidHttp = AndroidHttp.newCompatibleTransport();
-        JacksonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-
-        String devKey = "AIzaSyCsuertlnh87gNDuh4RvqHFw7vZEdangDM";
-        CalendarRequestInitializer apiKeyInit = new CalendarRequestInitializer(devKey);
-
-        service = new Calendar.Builder(httpTransport, jsonFactory, null)
-                .setCalendarRequestInitializer(apiKeyInit)
-                .build();
     }
 }
