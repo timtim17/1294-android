@@ -17,10 +17,10 @@ android {
     }
     buildTypes {
         release {
-            shrinkResources true
-            minifyEnabled true
+            minifyEnabled false
+            /*shrinkResources true
             proguardFile 'proguard-google-api-client.txt'
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'*/
         }
     }
 }
