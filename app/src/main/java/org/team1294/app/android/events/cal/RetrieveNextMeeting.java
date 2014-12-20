@@ -34,7 +34,7 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
         this.holder = this.context.findViewById(holderId);
     }
 
-    protected List<com.google.api.services.calendar.model.Event> doInBackground(Void... v) {
+    protected List<Event> doInBackground(Void... v) {
         try {
             return new CalendarService(context).setup()
                     .events()
@@ -55,8 +55,8 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
         }
     }
 
-    protected void onPostExecute(List<com.google.api.services.calendar.model.Event> events){
-        com.google.api.services.calendar.model.Event event = events.get(0);
+    protected void onPostExecute(List<Event> events){
+        Event event = events.get(0);
 
         TextView viewTextTimeLocation = (TextView) context.findViewById(timePlaceId);
 
