@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
-            new RetrieveNextMeeting(this, R.id.next_meeting, R.id.holder, R.id.text_days_to_meeting, R.id.text_time_location, R.id.loadingSpinnerMeeting).execute();
+        new RetrieveNextMeeting(this, R.id.next_meeting, R.id.holder, R.id.text_days_to_meeting, R.id.text_time_location, R.id.loadingSpinnerMeeting).execute();
     }
 
     /* Event Handlers */
