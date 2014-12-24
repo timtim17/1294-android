@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.api.client.util.DateTime;
@@ -17,7 +19,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
@@ -25,64 +26,99 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
     private int daysTillId;
     private int timePlaceId;
     private View holder;
+    private View innerHolder;
+    private ProgressBar loadingSpinner;
 
-    public RetrieveNextMeeting(Context context, int holderId, int daysTillId, int timePlaceId){
+    public RetrieveNextMeeting(Context context, int holderId, int innerHolderId, int daysTillId, int timePlaceId, int spinnerId){
         this.context = (Activity) context;
         this.daysTillId = daysTillId;
         this.timePlaceId = timePlaceId;
 
         this.holder = this.context.findViewById(holderId);
+        this.innerHolder = this.context.findViewById(innerHolderId);
+        this.loadingSpinner = (ProgressBar) this.context.findViewById(spinnerId);
+
+        innerHolder.setVisibility(View.GONE);
+        loadingSpinner.setVisibility(View.VISIBLE);
     }
 
     protected List<Event> doInBackground(Void... v) {
         try {
-            return new CalendarService(context).setup()
+            List<Event> tempList = new CalendarService(context).setup()
                     .events()
                     .list("frc1294@gmail.com")
                     .setMaxResults(1)
-                    .setQ("Regular Meeting")
+                    .setQ("Build Season")
+                    // .setQ("Regular Meeting")
                     .setOrderBy("startTime")
                     .setSingleEvents(true)
                     .setShowDeleted(false)
                     .setTimeMin(new DateTime(new Date()))
                     .execute()
                     .getItems();
+            if(tempList.size() == 0){
+                return null;
+            }
+            return tempList;
         } catch (IOException e) {
             Log.e("1294", "Calendar Error: ", e);
-            cancel(true);
-            holder.setVisibility(View.GONE);
             return null;
         }
     }
 
     protected void onPostExecute(List<Event> events){
+        if(events == null) return;
+
         Event event = events.get(0);
 
-        TextView viewTextTimeLocation = (TextView) context.findViewById(timePlaceId);
-
         try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSZ");
+            TextView viewTextTimeLocation = (TextView) context.findViewById(timePlaceId);
 
-            Calendar calStart = GregorianCalendar.getInstance();
-            Date start = format.parse(event.getStart().getDateTime().toStringRfc3339());
+            Calendar calStart = Calendar.getInstance(),
+                              calEnd = Calendar.getInstance(),
+                              calNow = Calendar.getInstance();
+            DateTime startTime, endTime;
+            SimpleDateFormat format;
+            boolean flag = true;
+            if(event.getStart().getDateTime() == null){
+                startTime = event.getStart().getDate();
+                endTime = event.getEnd().getDate();
+                format = new SimpleDateFormat("yyyy-MM-dd");
+                viewTextTimeLocation.setVisibility(View.GONE);
+                flag = false;
+            }else{
+                startTime = event.getStart().getDateTime();
+                endTime = event.getEnd().getDateTime();
+                format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSZ");
+            }
+
+
+            Date start = format.parse(startTime.toStringRfc3339());
             calStart.setTime(start);
 
-            Calendar calEnd = GregorianCalendar.getInstance();
-            Date end = format.parse(event.getEnd().getDateTime().toStringRfc3339());
+            Date end = format.parse(endTime.toStringRfc3339());
             calEnd.setTime(end);
-
-            Calendar calNow = GregorianCalendar.getInstance();
 
             TextView viewsTextDaysTill = (TextView) context.findViewById(daysTillId);
             viewsTextDaysTill.setTypeface(new Fonts(context).robotoThin);
-            viewsTextDaysTill.setText(String.valueOf(calStart.get(Calendar.DAY_OF_YEAR) - calNow.get(Calendar.DAY_OF_YEAR)));
+            viewsTextDaysTill.setText(
+                    String.valueOf(
+                            Math.abs(
+                                    (calStart.getTimeInMillis() - calNow.getTimeInMillis()) / 86400000
+                            )
+                    )
+            );
 
-            String tempStart = String.valueOf(calStart.get(Calendar.HOUR));
-            String tempEnd = String.valueOf(calEnd.get(Calendar.HOUR) + (calEnd.get(Calendar.AM_PM) == Calendar.AM ? " AM" : " PM"));
-            String location = event.getLocation().equals("Eastlake High School, 400 228th Ave NE, Sammamish, WA, United States") ? "Eastlake High School" : event.getLocation();
-            viewTextTimeLocation.setText(tempStart + " to " +tempEnd + " at " + location);
+            if(flag) {
+                String tempStart = String.valueOf(calStart.get(Calendar.HOUR));
+                String tempEnd = String.valueOf(calEnd.get(Calendar.HOUR) + (calEnd.get(Calendar.AM_PM) == Calendar.AM ? " AM" : " PM"));
+                String location = event.getLocation().equals("Eastlake High School, 400 228th Ave NE, Sammamish, WA, United States") ? "Eastlake High School" : event.getLocation();
+                viewTextTimeLocation.setText(tempStart + " to " + tempEnd + " at " + location);
+            }
+            innerHolder.setVisibility(View.VISIBLE);
+            loadingSpinner.setVisibility(View.GONE);
         } catch (ParseException e) {
-            Log.e("1294", "Calendar Error: " + e.getMessage(), e);
+            Log.e("1294", "Calendar Error: ", e);
             holder.setVisibility(View.GONE);
         }
     }

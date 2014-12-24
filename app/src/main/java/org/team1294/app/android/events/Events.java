@@ -1,15 +1,23 @@
 package org.team1294.app.android.events;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Events {
+    private static Event[] events = {
+            new Event("FRC Kickoff", "Mountlake Terrace High School", new GregorianCalendar(2015, 0, 3, 7, 30)),
+            new Event("Bag & Tag", "Eastlake High School", new GregorianCalendar(2015, 1, 17, 21, 0))
+    };
 
-    public static Event frcKickOff = null;
+    public static Event getNextEvent(){
+        Calendar nowTime = Calendar.getInstance(),
+                          eventTime = Calendar.getInstance();
 
-    public Events(){
-        if(frcKickOff == null) {
-            /* Create a new Event object that contains the details of the FRC Kickoff on 01/03/2015 @ 7:30 AM PST */
-            frcKickOff = new Event("FRC Kickoff", "Mountlake Terrace High School", new Date(115, 0, 2, 15, 30));
+        for(int i = 0; i < events.length; i++){
+            eventTime.setTimeInMillis(events[i].getDate().getTimeInMillis());
+            eventTime.add(Calendar.MINUTE, 5);
+            if(nowTime.getTimeInMillis() < eventTime.getTimeInMillis()) return events[i];
         }
+        return null;
     }
 }

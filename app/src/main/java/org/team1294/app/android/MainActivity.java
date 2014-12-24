@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,23 +50,26 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
     // TODO: Create JavaDoc Comments
-    // TODO: Add Next Event Card
 
-    private Event currentEvent = new Events().frcKickOff;
+    Event currentEvent = Events.getNextEvent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface robotoThin = new Fonts(this).robotoThin;
+        if(currentEvent != null) {
+            LinearLayout timerView = (LinearLayout) findViewById(R.id.timer_layout);
+            LinearLayout afterCountdownDoneShowView = (LinearLayout) findViewById(R.id.layout_livestream);
+            new EventCountdown(currentEvent, timerView, R.id.timer, R.id.event, afterCountdownDoneShowView, true);
+        }else{
+            {
+                CardView cv = (CardView) findViewById(R.id.next_meeting);
+                cv.setVisibility(View.GONE);
+            }
+        }
 
-        LinearLayout timerView = (LinearLayout) findViewById(R.id.timer_layout);
-        TextView eventText = (TextView) findViewById(R.id.event);
-        LinearLayout afterCountdownDoneShowView = (LinearLayout) findViewById(R.id.layout_livestream);
-        new EventCountdown(currentEvent, timerView, R.id.timer, R.id.event, afterCountdownDoneShowView, true);
-
-        new RetrieveNextMeeting(this, R.id.next_meeting, R.id.text_days_to_meeting, R.id.text_time_location).execute();
+            new RetrieveNextMeeting(this, R.id.next_meeting, R.id.holder, R.id.text_days_to_meeting, R.id.text_time_location, R.id.loadingSpinnerMeeting).execute();
     }
 
     /* Event Handlers */

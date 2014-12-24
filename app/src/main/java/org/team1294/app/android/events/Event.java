@@ -6,13 +6,14 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Event{
     private String eventName;
     private String mapsURL;
-    private Date date;
+    private Calendar date;
 
-    public Event(String eventName, String location, Date cal){
+    public Event(String eventName, String location, Calendar cal){
         this.eventName = eventName;
         try {
             this.mapsURL = "geo:0,0?q=" + URLEncoder.encode(location, "UTF-8");
@@ -31,7 +32,7 @@ public class Event{
         return this.eventName;
     }
     public String getLocation(){return this.mapsURL;}
-    public Date getDate(){
+    public Calendar getDate(){
         return this.date;
     }
 }

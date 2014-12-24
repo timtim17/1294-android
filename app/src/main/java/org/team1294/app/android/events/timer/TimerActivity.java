@@ -51,8 +51,10 @@ public class TimerActivity extends ActionBarActivity {
 
         // new EventCountdown(getIntent().getSerializableExtra("event"), contentView, R.id.timer, R.id.event, false);
         // TODO: Pass event using intent
-
-        new EventCountdown(Events.frcKickOff, contentView, R.id.timer, R.id.event, false);
+        Event e = Events.getNextEvent();
+        if(e != null)
+            new EventCountdown(e, contentView, R.id.timer, R.id.event, findViewById(R.id.timer), false);
+        else finish();
     }
 
 
