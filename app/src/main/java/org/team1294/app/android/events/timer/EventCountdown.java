@@ -15,8 +15,8 @@ public class EventCountdown {
     private TextView timerText;
 
     public EventCountdown(Event event, final View timerView, int timerTextId, int eventId, final View viewToShow, final boolean hideCountdownOnDone){
-        final long eventTime = event.getDate().getTimeInMillis(),
-                  nowTime = new Date(System.currentTimeMillis()).getTime();
+        final long eventTime = event.getDate().getTimeInMillis();
+        long nowTime = new Date(System.currentTimeMillis()).getTime();
 
         timerText = (TextView) timerView.findViewById(timerTextId);
 
