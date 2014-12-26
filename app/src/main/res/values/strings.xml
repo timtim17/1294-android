@@ -27,4 +27,6 @@ Duis vitae leo in quam varius scelerisque. Praesent accumsan aliquet volutpat. D
     <string name="countdown.event.name">Till FRC Kickoff</string>
     <string name="countdown.event.link">Watch FRC Kickoff</string>
     <string name="sharedPrefsId">org.team1294.app.android.sharedprefs</string>
+    <string name="title_activity_contact">Contact Info</string>
+
 </resources>
