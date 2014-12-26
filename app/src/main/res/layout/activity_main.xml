@@ -79,7 +79,8 @@
                 android:id="@+id/button_usfirst"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/first_logo"
-                android:drawableStart="@drawable/first_logo" />
+                android:drawableStart="@drawable/first_logo"
+                android:onClick="showUsFirst"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -88,7 +89,8 @@
                 android:id="@+id/button_wafirst"
                 android:layout_weight="1"
                 android:drawableRight="@drawable/ic_button_wafirst"
-                android:drawableEnd="@drawable/ic_button_wafirst" />
+                android:drawableEnd="@drawable/ic_button_wafirst"
+                android:onClick="showWAFirst"/>
         </LinearLayout>
 
         <Button

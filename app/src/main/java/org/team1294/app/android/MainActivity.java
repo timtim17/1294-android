@@ -113,12 +113,20 @@ public class MainActivity extends ActionBarActivity {
     /* Opens User's Browser and Goes to FRC Kickoff Livestream (Real Link to be Added Later) */
     public void showLivestream(View v){
         startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://www.usfirst.org/roboticsprograms/frc/kickoff")));
+                Uri.parse("http://corporate.comcast.com/news-information/news-feed/2015-first-robotics-competition-kickoff")));
     }
     public void navigateToEvent(View v){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(currentEvent.getLocation()));
         startActivity(intent);
+    }
+    public void showUsFirst(View v){
+        startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.usfirst.org/")));
+    }
+    public void showWaFirst(View v){
+        startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.firstwa.org/")));
     }
 
     public void expandTimer(View v) {
