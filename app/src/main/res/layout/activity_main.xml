@@ -183,7 +183,9 @@
             android:padding="8dp"
             android:layout_marginTop="8dp"
             android:visibility="visible"
-            >
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            tools:ignore="NewApi">
             <ProgressBar
                 android:id="@+id/loadingSpinnerMeeting"
                 android:layout_width="match_parent"
@@ -268,9 +270,9 @@
             android:layout_height="72dp"
             android:text="Contact Info"
             android:id="@+id/button_contact"
-            android:drawableLeft="@drawable/ic_button_contact"
-            android:drawableStart="@drawable/ic_button_contact"
-            />
+            android:drawableLeft="@drawable/ic_phone_48"
+            android:drawableStart="@drawable/ic_phone_48"
+            android:onClick="showContactActivity"/>
 
         <Button
             android:layout_width="match_parent"

@@ -30,3 +30,7 @@ _(I'll be adding a better guide at a later date.)_
 Make sure to generate your own Calendar API key if you make your own APK. Instructions are provided on the Google Developers website (link to be added later).
 
 Do note that a lot of things are unfinished and unpolished, as this is a work in progress.
+
+## Credits
+
+[Stack Overflow](http://www.stackoverflow.com/) was used a lot, and some icons are from [here](https://github.com/google/material-design-icons). [This](http://itsalmo.st/#frckickoff2015_hg16m) was a great help for testing the countdown, as well as [The Blue Alliance](http://www.thebluealliance.com/).

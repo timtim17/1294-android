@@ -2,6 +2,8 @@ package org.team1294.app.android.events.cal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -48,8 +50,8 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
                     .events()
                     .list("frc1294@gmail.com")
                     .setMaxResults(1)
-                    .setQ("Build Season")
                     // .setQ("Regular Meeting")
+                    .setQ("Build Season")
                     .setOrderBy("startTime")
                     .setSingleEvents(true)
                     .setShowDeleted(false)
@@ -69,7 +71,7 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
     protected void onPostExecute(List<Event> events){
         if(events == null) return;
 
-        Event event = events.get(0);
+        final Event event = events.get(0);
 
         try {
             TextView viewTextTimeLocation = (TextView) context.findViewById(timePlaceId);
@@ -117,6 +119,21 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
             }
             innerHolder.setVisibility(View.VISIBLE);
             loadingSpinner.setVisibility(View.GONE);
+
+            holder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Intent i = new Intent(Intent.ACTION_VIEW,
+                                                    Uri.parse(event.getHtmlLink()));
+                    v.postDelayed(new Runnable() {
+                              @Override
+                              public void run() {
+                                  context.startActivity(i);
+                              }
+                          },
+                    300L);
+                }
+            });
         } catch (ParseException e) {
             Log.e("1294", "Calendar Error: ", e);
             holder.setVisibility(View.GONE);

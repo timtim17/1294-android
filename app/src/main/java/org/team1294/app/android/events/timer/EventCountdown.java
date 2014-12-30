@@ -15,8 +15,8 @@ public class EventCountdown {
     private TextView timerText;
 
     public EventCountdown(Event event, final View timerView, int timerTextId, int eventId, final View viewToShow, final boolean hideCountdownOnDone){
-        final long eventTime = event.getDate().getTimeInMillis();
-        long nowTime = new Date(System.currentTimeMillis()).getTime();
+        final long eventTime = event.getDate().getTime(),
+                            nowTime = System.currentTimeMillis();
 
         timerText = (TextView) timerView.findViewById(timerTextId);
 
@@ -38,7 +38,7 @@ public class EventCountdown {
                 if(days < 10) timeString += "0" + days + ":";
                     else if(days >= 10) timeString += String.valueOf(days) + ":";
                 if(hours < 10) timeString += "0" + hours + ":";
-                    else if(days >= 10) timeString += String.valueOf(hours) + ":";
+                    else if(hours >= 10) timeString += String.valueOf(hours) + ":";
                 if(minutes < 10) timeString += "0" + minutes + ":";
                     else if(minutes >= 10) timeString += String.valueOf(minutes) + ":";
                 if(seconds < 10) timeString += "0" + seconds;

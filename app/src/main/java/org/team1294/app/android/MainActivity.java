@@ -25,6 +25,7 @@ import com.google.api.services.calendar.CalendarRequestInitializer;
 import com.google.api.services.calendar.CalendarScopes;
 
 import org.team1294.app.android.about.AboutActivity;
+import org.team1294.app.android.contact.ContactActivity;
 import org.team1294.app.android.events.Event;
 import org.team1294.app.android.events.Events;
 import org.team1294.app.android.events.cal.RetrieveNextMeeting;
@@ -110,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
     public void showSponsors(View v){
         startActivity(new Intent(this, SponsorActivity.class));
     }
-    /* Opens User's Browser and Goes to FRC Kickoff Livestream (Real Link to be Added Later) */
+    /* Opens User's Browser and Goes to FRC Kickoff Livestream */
     public void showLivestream(View v){
         startActivity(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://corporate.comcast.com/news-information/news-feed/2015-first-robotics-competition-kickoff")));
@@ -124,9 +125,12 @@ public class MainActivity extends ActionBarActivity {
         startActivity(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://www.usfirst.org/")));
     }
-    public void showWaFirst(View v){
+    public void showWAFirst(View v){
         startActivity(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://www.firstwa.org/")));
+    }
+    public void showContactActivity(View v){
+        startActivity(new Intent(this, ContactActivity.class));
     }
 
     public void expandTimer(View v) {
