@@ -120,7 +120,7 @@ public class RetrieveNextMeeting extends AsyncTask<Void, Void, List<Event>> {
             innerHolder.setVisibility(View.VISIBLE);
             loadingSpinner.setVisibility(View.GONE);
 
-            holder.setOnClickListener(new View.OnClickListener() {
+            innerHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     final Intent i = new Intent(Intent.ACTION_VIEW,

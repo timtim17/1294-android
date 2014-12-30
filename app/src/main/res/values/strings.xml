@@ -22,11 +22,8 @@ Duis vitae leo in quam varius scelerisque. Praesent accumsan aliquet volutpat. D
     <string name="about_team">About the Team</string>
     <string name="about_app">About the App</string>
     <string name="title_activity_timer">Countdown to FRC Kickoff</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="countdown.event.name">Till FRC Kickoff</string>
     <string name="countdown.event.link">Watch FRC Kickoff</string>
-    <string name="sharedPrefsId">org.team1294.app.android.sharedprefs</string>
     <string name="title_activity_contact">Contact Info</string>
 
 </resources>

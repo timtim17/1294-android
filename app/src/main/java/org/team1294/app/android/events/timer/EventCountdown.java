@@ -10,13 +10,15 @@ import org.team1294.app.android.events.Event;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class EventCountdown {
     private TextView timerText;
 
     public EventCountdown(Event event, final View timerView, int timerTextId, int eventId, final View viewToShow, final boolean hideCountdownOnDone){
-        final long eventTime = event.getDate().getTime(),
-                            nowTime = System.currentTimeMillis();
+        // This class seems to be off by 4 seconds, so take the event and take away the extra 4 seconds.
+        final long eventTime = new Date(event.getDate().getTime() - 4000).getTime();
+        long nowTime = System.currentTimeMillis();
 
         timerText = (TextView) timerView.findViewById(timerTextId);
 
@@ -26,12 +28,10 @@ public class EventCountdown {
         new CountDownTimer(eventTime - nowTime, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
-                Date date = new Date(millisUntilFinished);
-
-                int seconds = Integer.parseInt(new SimpleDateFormat("ss").format(date)),
-                      minutes = Integer.parseInt(new SimpleDateFormat("mm").format(date)),
-                      hours = Integer.parseInt(new SimpleDateFormat("HH").format(date)),
-                      days = Integer.parseInt(new SimpleDateFormat("DD").format(date));
+                int seconds = (int) (millisUntilFinished / 1000) % 60,
+                      minutes = (int) ((millisUntilFinished / (1000*60)) % 60),
+                      hours = (int) ((millisUntilFinished / (1000*60*60)) % 24),
+                      days = (int) (millisUntilFinished / (1000*60*60*24));
 
                 String timeString = "";
 
