@@ -16,8 +16,7 @@ public class EventCountdown {
     private TextView timerText;
 
     public EventCountdown(Event event, final View timerView, int timerTextId, int eventId, final View viewToShow, final boolean hideCountdownOnDone){
-        // This class seems to be off by 4 seconds, so take the event and take away the extra 4 seconds.
-        final long eventTime = new Date(event.getDate().getTime() - 4000).getTime();
+        final long eventTime = event.getDate().getTime();
         long nowTime = System.currentTimeMillis();
 
         timerText = (TextView) timerView.findViewById(timerTextId);
